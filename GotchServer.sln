@@ -2,6 +2,11 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GotchServer.Portal", "GotchServer.Portal\GotchServer.Portal.csproj", "{EC20B295-CA0F-4311-9927-200B36FB67B7}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B8E8D3BD-D677-4AB6-A274-EB41CD98AFC7} = {B8E8D3BD-D677-4AB6-A274-EB41CD98AFC7}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoDutch.Model", "GoDutch.Model\GoDutch.Model.csproj", "{B8E8D3BD-D677-4AB6-A274-EB41CD98AFC7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +18,10 @@ Global
 		{EC20B295-CA0F-4311-9927-200B36FB67B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC20B295-CA0F-4311-9927-200B36FB67B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC20B295-CA0F-4311-9927-200B36FB67B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8E8D3BD-D677-4AB6-A274-EB41CD98AFC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8E8D3BD-D677-4AB6-A274-EB41CD98AFC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8E8D3BD-D677-4AB6-A274-EB41CD98AFC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8E8D3BD-D677-4AB6-A274-EB41CD98AFC7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
