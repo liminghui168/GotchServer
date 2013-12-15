@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Sanwai_CustModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="Sanwai_CustModelStoreContainer">
+          <EntitySet Name="Stock" EntityType="Sanwai_CustModel.Store.Stock" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="Stock">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="stock" Type="nvarchar" MaxLength="50" />
+          <Property Name="vref" Type="nvarchar" MaxLength="50" />
+          <Property Name="partno" Type="nvarchar" MaxLength="50" />
+          <Property Name="barcode" Type="nvarchar" MaxLength="50" />
+          <Property Name="active" Type="bit" />
+          <Property Name="serialno" Type="nvarchar" MaxLength="20" />
+          <Property Name="maincate" Type="int" />
+          <Property Name="des" Type="text" />
+          <Property Name="shortdes" Type="nvarchar" MaxLength="100" />
+          <Property Name="unit" Type="nvarchar" MaxLength="6" />
+          <Property Name="category" Type="nvarchar" MaxLength="6" />
+          <Property Name="brand" Type="nvarchar" MaxLength="20" />
+          <Property Name="costcurr" Type="nvarchar" MaxLength="6" />
+          <Property Name="pricecurr" Type="nvarchar" MaxLength="6" />
+          <Property Name="cost" Type="float" />
+          <Property Name="price" Type="float" />
+          <Property Name="delaprice" Type="float" />
+          <Property Name="btnprice" Type="float" />
+          <Property Name="vendor" Type="nvarchar" MaxLength="50" />
+          <Property Name="vendorname" Type="nvarchar" MaxLength="250" />
+          <Property Name="cbalqty" Type="float" />
+          <Property Name="stktake" Type="float" />
+          <Property Name="onholdqty" Type="float" />
+          <Property Name="rmaqty" Type="float" />
+          <Property Name="purqty" Type="float" />
+          <Property Name="minqty" Type="float" />
+          <Property Name="maxqty" Type="float" />
+          <Property Name="rem" Type="text" />
+          <Property Name="rem2" Type="text" />
+          <Property Name="createdate" Type="datetime" />
+          <Property Name="cost_wa_dt" Type="datetime" />
+          <Property Name="cost_wa" Type="float" />
+          <Property Name="totcos_wa" Type="float" />
+          <Property Name="picfile" Type="nvarchar" MaxLength="200" />
+          <Property Name="power" Type="nvarchar" MaxLength="40" />
+          <Property Name="opowerrms" Type="nvarchar" MaxLength="40" />
+          <Property Name="opowerpmpo" Type="nvarchar" MaxLength="40" />
+          <Property Name="gbbarcode" Type="nvarchar" MaxLength="40" />
+          <Property Name="ocbarcode" Type="nvarchar" MaxLength="40" />
+          <Property Name="pbarcode" Type="nvarchar" MaxLength="40" />
+          <Property Name="sclass" Type="nvarchar" MaxLength="40" />
+          <Property Name="subclass" Type="nvarchar" MaxLength="40" />
+          <Property Name="edittime" Type="int" />
+          <Property Name="firstmdate" Type="datetime" />
+          <Property Name="fusername" Type="nvarchar" MaxLength="20" />
+          <Property Name="lastmdate" Type="datetime" />
+          <Property Name="username" Type="nvarchar" MaxLength="20" />
+          <Property Name="Client" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address" Type="nvarchar" MaxLength="100" />
+          <Property Name="DeliveryAddress" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Sanwai_CustModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="Sanwai_CustEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Stocks" EntityType="Sanwai_CustModel.Stock" />
+        </EntityContainer>
+        <EntityType Name="Stock">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="stock1" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="vref" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="partno" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="barcode" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="active" Type="Boolean" />
+          <Property Name="serialno" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="maincate" Type="Int32" />
+          <Property Name="des" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="shortdes" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="unit" Type="String" MaxLength="6" Unicode="true" FixedLength="false" />
+          <Property Name="category" Type="String" MaxLength="6" Unicode="true" FixedLength="false" />
+          <Property Name="brand" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="costcurr" Type="String" MaxLength="6" Unicode="true" FixedLength="false" />
+          <Property Name="pricecurr" Type="String" MaxLength="6" Unicode="true" FixedLength="false" />
+          <Property Name="cost" Type="Double" />
+          <Property Name="price" Type="Double" />
+          <Property Name="delaprice" Type="Double" />
+          <Property Name="btnprice" Type="Double" />
+          <Property Name="vendor" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="vendorname" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="cbalqty" Type="Double" />
+          <Property Name="stktake" Type="Double" />
+          <Property Name="onholdqty" Type="Double" />
+          <Property Name="rmaqty" Type="Double" />
+          <Property Name="purqty" Type="Double" />
+          <Property Name="minqty" Type="Double" />
+          <Property Name="maxqty" Type="Double" />
+          <Property Name="rem" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="rem2" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="createdate" Type="DateTime" />
+          <Property Name="cost_wa_dt" Type="DateTime" />
+          <Property Name="cost_wa" Type="Double" />
+          <Property Name="totcos_wa" Type="Double" />
+          <Property Name="picfile" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="power" Type="String" MaxLength="40" Unicode="true" FixedLength="false" />
+          <Property Name="opowerrms" Type="String" MaxLength="40" Unicode="true" FixedLength="false" />
+          <Property Name="opowerpmpo" Type="String" MaxLength="40" Unicode="true" FixedLength="false" />
+          <Property Name="gbbarcode" Type="String" MaxLength="40" Unicode="true" FixedLength="false" />
+          <Property Name="ocbarcode" Type="String" MaxLength="40" Unicode="true" FixedLength="false" />
+          <Property Name="pbarcode" Type="String" MaxLength="40" Unicode="true" FixedLength="false" />
+          <Property Name="sclass" Type="String" MaxLength="40" Unicode="true" FixedLength="false" />
+          <Property Name="subclass" Type="String" MaxLength="40" Unicode="true" FixedLength="false" />
+          <Property Name="edittime" Type="Int32" />
+          <Property Name="firstmdate" Type="DateTime" />
+          <Property Name="fusername" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="lastmdate" Type="DateTime" />
+          <Property Name="username" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Client" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Address" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="DeliveryAddress" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Sanwai_CustModelStoreContainer" CdmEntityContainer="Sanwai_CustEntities">
+          <EntitySetMapping Name="Stocks">
+            <EntityTypeMapping TypeName="Sanwai_CustModel.Stock">
+              <MappingFragment StoreEntitySet="Stock">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="stock1" ColumnName="stock" />
+                <ScalarProperty Name="vref" ColumnName="vref" />
+                <ScalarProperty Name="partno" ColumnName="partno" />
+                <ScalarProperty Name="barcode" ColumnName="barcode" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="serialno" ColumnName="serialno" />
+                <ScalarProperty Name="maincate" ColumnName="maincate" />
+                <ScalarProperty Name="des" ColumnName="des" />
+                <ScalarProperty Name="shortdes" ColumnName="shortdes" />
+                <ScalarProperty Name="unit" ColumnName="unit" />
+                <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="brand" ColumnName="brand" />
+                <ScalarProperty Name="costcurr" ColumnName="costcurr" />
+                <ScalarProperty Name="pricecurr" ColumnName="pricecurr" />
+                <ScalarProperty Name="cost" ColumnName="cost" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="delaprice" ColumnName="delaprice" />
+                <ScalarProperty Name="btnprice" ColumnName="btnprice" />
+                <ScalarProperty Name="vendor" ColumnName="vendor" />
+                <ScalarProperty Name="vendorname" ColumnName="vendorname" />
+                <ScalarProperty Name="cbalqty" ColumnName="cbalqty" />
+                <ScalarProperty Name="stktake" ColumnName="stktake" />
+                <ScalarProperty Name="onholdqty" ColumnName="onholdqty" />
+                <ScalarProperty Name="rmaqty" ColumnName="rmaqty" />
+                <ScalarProperty Name="purqty" ColumnName="purqty" />
+                <ScalarProperty Name="minqty" ColumnName="minqty" />
+                <ScalarProperty Name="maxqty" ColumnName="maxqty" />
+                <ScalarProperty Name="rem" ColumnName="rem" />
+                <ScalarProperty Name="rem2" ColumnName="rem2" />
+                <ScalarProperty Name="createdate" ColumnName="createdate" />
+                <ScalarProperty Name="cost_wa_dt" ColumnName="cost_wa_dt" />
+                <ScalarProperty Name="cost_wa" ColumnName="cost_wa" />
+                <ScalarProperty Name="totcos_wa" ColumnName="totcos_wa" />
+                <ScalarProperty Name="picfile" ColumnName="picfile" />
+                <ScalarProperty Name="power" ColumnName="power" />
+                <ScalarProperty Name="opowerrms" ColumnName="opowerrms" />
+                <ScalarProperty Name="opowerpmpo" ColumnName="opowerpmpo" />
+                <ScalarProperty Name="gbbarcode" ColumnName="gbbarcode" />
+                <ScalarProperty Name="ocbarcode" ColumnName="ocbarcode" />
+                <ScalarProperty Name="pbarcode" ColumnName="pbarcode" />
+                <ScalarProperty Name="sclass" ColumnName="sclass" />
+                <ScalarProperty Name="subclass" ColumnName="subclass" />
+                <ScalarProperty Name="edittime" ColumnName="edittime" />
+                <ScalarProperty Name="firstmdate" ColumnName="firstmdate" />
+                <ScalarProperty Name="fusername" ColumnName="fusername" />
+                <ScalarProperty Name="lastmdate" ColumnName="lastmdate" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="Client" ColumnName="Client" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="DeliveryAddress" ColumnName="DeliveryAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model" ZoomLevel="98">
+        <EntityTypeShape EntityType="Sanwai_CustModel.Stock" Width="1.5" PointX="0.75" PointY="0.75" Height="10.7569384765625" IsExpanded="true" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

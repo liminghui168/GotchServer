@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
-using GoDutch.Model;
+using GoDutchServer.Model;
 
 namespace GotchServer.Portal.Controllers
 {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GoDutch.Model
+namespace GoDutchServer.Model
 {
     [Serializable]
     public class MyUser
