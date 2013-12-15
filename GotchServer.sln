@@ -6,7 +6,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GotchServer.Portal", "Gotch
 		{B8E8D3BD-D677-4AB6-A274-EB41CD98AFC7} = {B8E8D3BD-D677-4AB6-A274-EB41CD98AFC7}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoDutch.Model", "GoDutch.Model\GoDutch.Model.csproj", "{B8E8D3BD-D677-4AB6-A274-EB41CD98AFC7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoDutchServer.Model", "GoDutch.Model\GoDutchServer.Model.csproj", "{B8E8D3BD-D677-4AB6-A274-EB41CD98AFC7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -132,9 +132,9 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GoDutch.Model\GoDutch.Model.csproj">
+    <ProjectReference Include="..\GoDutch.Model\GoDutchServer.Model.csproj">
       <Project>{B8E8D3BD-D677-4AB6-A274-EB41CD98AFC7}</Project>
-      <Name>GoDutch.Model</Name>
+      <Name>GoDutchServer.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

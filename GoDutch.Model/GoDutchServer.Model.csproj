@@ -8,8 +8,8 @@
     <ProjectGuid>{B8E8D3BD-D677-4AB6-A274-EB41CD98AFC7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GoDutch.Model</RootNamespace>
-    <AssemblyName>GoDutch.Model</AssemblyName>
+    <RootNamespace>GoDutchServer.Model</RootNamespace>
+    <AssemblyName>GoDutchServer.Model</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
