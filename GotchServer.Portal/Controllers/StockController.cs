@@ -19,7 +19,25 @@ namespace GotchServer.Portal.Controllers
         {
             int pageIndex = Request["pageIndex"] == null ? 1 : int.Parse(Request["pageIndex"]);
             int pageSize = Request["pageSize"] == null ? 10 : int.Parse(Request["pageSize"]);
-            return null;
+            int total = 0;
+
+            var list = stockRepostory.LoadStocksByPage(pageIndex, pageSize, out total, s => true, s => s.Id, true);
+
+            var data = new
+                           {
+                               total = total,
+                               rows = from stock in list  
+                                      select new
+                                                 {
+                                                     stock.Id,
+                                                     stock.brand,
+                                                     stock.stock1,
+                                                     stock.vref,
+                                                     stock.partno
+                                                 }
+                           };
+
+            return Json(data, JsonRequestBehavior.AllowGet);
         }
 
         //public IEnumerable<Stock> Get()
