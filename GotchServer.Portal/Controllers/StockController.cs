@@ -40,6 +40,45 @@ namespace GotchServer.Portal.Controllers
             return Json(data, JsonRequestBehavior.AllowGet);
         }
 
+
+        public ActionResult LoadStockDetail(int id)
+        {
+            var stockModel = stockRepostory.LoadStocks(s => s.Id == id).FirstOrDefault();
+            if(stockModel==null)
+            {
+                return Content("null");
+            }
+            var data = new
+                           {
+                               stockModel.Id,
+                               stockModel.stock1,
+                               stockModel.vendor,
+                               stockModel.vendorname,
+                               stockModel.vref,
+                               stockModel.shortdes,
+                               stockModel.power,
+                               stockModel.opowerrms,
+                               stockModel.opowerpmpo,
+                               stockModel.partno,
+                               stockModel.unit,
+                               stockModel.pricecurr,
+                               stockModel.price,
+                               stockModel.costcurr,
+                               stockModel.cost,
+                               stockModel.firstmdate,
+                               stockModel.brand,
+                               stockModel.category,
+                               stockModel.gbbarcode,
+                               stockModel.ocbarcode,
+                               stockModel.pbarcode,
+                               stockModel.sclass,
+                               stockModel.subclass,
+                               stockModel.active
+                           };
+
+            return Json(data,JsonRequestBehavior.AllowGet);
+        }
+
         //public IEnumerable<Stock> Get()
         //{
         //    IQueryable<Stock> list = null;
