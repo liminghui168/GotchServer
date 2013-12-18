@@ -65,7 +65,7 @@ namespace GotchServer.Portal.Controllers
                                stockModel.price,
                                stockModel.costcurr,
                                stockModel.cost,
-                               stockModel.firstmdate,
+                               firstmdate = stockModel.firstmdate.Value.ToString("yyyy-MM-dd"),
                                stockModel.brand,
                                stockModel.category,
                                stockModel.gbbarcode,
