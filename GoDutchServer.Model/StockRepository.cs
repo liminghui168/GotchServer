@@ -57,7 +57,7 @@ namespace GoDutchServer.Model
         public int DeleteStock(Stock stock)
         {
 
-            dbContext.Stocks.AddObject(stock);
+            //dbContext.Stocks.AddObject(stock);
             dbContext.ObjectStateManager.ChangeObjectState(stock, EntityState.Deleted);
             return SaveChanges();
         }

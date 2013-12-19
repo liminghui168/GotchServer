@@ -40,6 +40,46 @@ namespace GotchServer.Portal.Controllers
             return Json(data, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult AddStockDetail()
+        {
+            string json = Request["stockJson"];
+            Stock stock = Newtonsoft.Json.JsonConvert.DeserializeObject<Stock>(json);
+
+            int result = stockRepostory.AddStock(stock);
+            if (result > 0)
+                return Content("ok");
+            return Content("error");
+        }
+
+        [System.Web.Mvc.HttpPost]
+        public ActionResult UpdateStockDetail()
+        {
+            string json = Request["stockJson"];
+            Stock stock = new Stock();
+            stock = Newtonsoft.Json.JsonConvert.DeserializeObject<Stock>(json);
+            int result =  stockRepostory.UpdateStock(stock);
+            if (result > 0)
+                return Content("ok");
+            return Content("error");
+        }
+
+        public ActionResult DeleteStockDetail(int id)
+        {
+            int result = 0;
+            var stockModel = stockRepostory.LoadStocks(s => s.Id == id).FirstOrDefault();
+            if(stockModel!=null)
+            {
+                result = stockRepostory.DeleteStock(stockModel);
+                if(result>0)
+                {
+                    return Content("ok");
+                }
+                return Content("error");
+            }
+
+            return Content("error");
+        }
+
 
         public ActionResult LoadStockDetail(int id)
         {
@@ -55,6 +95,7 @@ namespace GotchServer.Portal.Controllers
                                stockModel.vendor,
                                stockModel.vendorname,
                                stockModel.vref,
+                               stockModel.des,
                                stockModel.shortdes,
                                stockModel.power,
                                stockModel.opowerrms,
@@ -65,7 +106,7 @@ namespace GotchServer.Portal.Controllers
                                stockModel.price,
                                stockModel.costcurr,
                                stockModel.cost,
-                               firstmdate = stockModel.firstmdate.Value.ToString("yyyy-MM-dd"),
+                               createdata = stockModel.createdate.Value.ToString("yyyy-MM-dd"),
                                stockModel.brand,
                                stockModel.category,
                                stockModel.gbbarcode,
