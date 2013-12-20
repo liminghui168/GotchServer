@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -13,6 +14,11 @@ namespace GotchServer.Portal.Controllers
     {
 
         private readonly StockRepostory stockRepostory = new StockRepostory();
+
+        private string StorageRoot
+        {
+            get { return Path.Combine(System.Web.HttpContext.Current.Server.MapPath("~/Images/")); } //Path should! always end with '/'
+        }
 
         #region 分页获取数据
         /// <summary>
@@ -322,12 +328,40 @@ namespace GotchServer.Portal.Controllers
                                stockModel.pbarcode,
                                stockModel.sclass,
                                stockModel.subclass,
-                               stockModel.active
+                               stockModel.active,
+                               stockModel.picfile
                            };
 
             return Json(data, JsonRequestBehavior.AllowGet);
         } 
         #endregion
+
+
+        public ActionResult UpdataLoadImg()
+        {
+            try
+            {
+                var file = Request.Files[0];
+                int stockId = Convert.ToInt32(Request["stockId"]);
+                string fullPath = string.Empty;
+                fullPath = StorageRoot + Path.GetFileName(file.FileName);
+
+                file.SaveAs(fullPath);
+
+                var model = stockRepostory.LoadStocks(s => s.Id == stockId).FirstOrDefault();
+                if(model!=null)
+                {
+                    model.picfile = "Images/"+file.FileName;
+                }
+
+                stockRepostory.UpdateStockNoAttach(model);
+                return Content("up_success");
+            }
+            catch (Exception)
+            {
+                return Content("up_error");
+            }
+        }
 
     }
 }

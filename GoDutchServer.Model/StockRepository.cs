@@ -54,6 +54,12 @@ namespace GoDutchServer.Model
             return SaveChanges();
         }
 
+        public int UpdateStockNoAttach(Stock stock)
+        {
+            dbContext.ObjectStateManager.ChangeObjectState(stock, EntityState.Modified);
+            return SaveChanges();
+        }
+
         public int DeleteStock(Stock stock)
         {
 
