@@ -60,6 +60,13 @@ namespace GotchServer.Portal.Controllers
         {
             string json = Request["stockJson"];
             Stock stock = Newtonsoft.Json.JsonConvert.DeserializeObject<Stock>(json);
+            var file = Request.Files[0];
+            if(file!=null)
+            {
+                string fullPath = StorageRoot + Path.GetFileName(file.FileName);
+                stock.picfile = file.FileName;
+                file.SaveAs(fullPath);
+            }
 
             int result = stockRepostory.AddStock(stock);
             if (result > 0)
@@ -79,6 +86,13 @@ namespace GotchServer.Portal.Controllers
             string json = Request["stockJson"];
             Stock stock = new Stock();
             stock = Newtonsoft.Json.JsonConvert.DeserializeObject<Stock>(json);
+            var file = Request.Files[0];
+            if (file != null)
+            {
+                string fullPath = StorageRoot + Path.GetFileName(file.FileName);
+                stock.picfile = file.FileName;
+                file.SaveAs(fullPath);
+            }
             int result = stockRepostory.UpdateStock(stock);
             if (result > 0)
                 return Content("ok");
@@ -146,7 +160,8 @@ namespace GotchServer.Portal.Controllers
                 stockModel.pbarcode,
                 stockModel.sclass,
                 stockModel.subclass,
-                stockModel.active
+                stockModel.active,
+                stockModel.picfile
             };
 
             return Json(data, JsonRequestBehavior.AllowGet);
@@ -190,7 +205,8 @@ namespace GotchServer.Portal.Controllers
                     stockModel.pbarcode,
                     stockModel.sclass,
                     stockModel.subclass,
-                    stockModel.active
+                    stockModel.active,
+                    stockModel.picfile
                 };
 
                 return Json(data, JsonRequestBehavior.AllowGet);
@@ -238,7 +254,8 @@ namespace GotchServer.Portal.Controllers
                     stockModel.pbarcode,
                     stockModel.sclass,
                     stockModel.subclass,
-                    stockModel.active
+                    stockModel.active,
+                    stockModel.picfile
                 };
 
                 return Json(data, JsonRequestBehavior.AllowGet);
@@ -283,7 +300,8 @@ namespace GotchServer.Portal.Controllers
                 stockModel.pbarcode,
                 stockModel.sclass,
                 stockModel.subclass,
-                stockModel.active
+                stockModel.active,
+                stockModel.picfile
             };
 
             return Json(data, JsonRequestBehavior.AllowGet);
@@ -343,19 +361,29 @@ namespace GotchServer.Portal.Controllers
             {
                 var file = Request.Files[0];
                 int stockId = Convert.ToInt32(Request["stockId"]);
+                //string fileName = Request["fileName"];
                 string fullPath = string.Empty;
                 fullPath = StorageRoot + Path.GetFileName(file.FileName);
 
                 file.SaveAs(fullPath);
+                /*if(string.IsNullOrEmpty(fileName))
+                {
+                    file.SaveAs(fullPath + fileName);
+                }
+                else
+                {
+                    file.SaveAs(fullPath);
+                }*/
+                
 
                 var model = stockRepostory.LoadStocks(s => s.Id == stockId).FirstOrDefault();
                 if(model!=null)
                 {
-                    model.picfile = "Images/"+file.FileName;
+                    model.picfile = file.FileName;
+                    stockRepostory.UpdateStockNoAttach(model);
+                    return Content("up_success");
                 }
-
-                stockRepostory.UpdateStockNoAttach(model);
-                return Content("up_success");
+                return Content("up_error");
             }
             catch (Exception)
             {
