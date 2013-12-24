@@ -17,7 +17,7 @@ namespace GotchServer.Portal.Controllers
 
         private string StorageRoot
         {
-            get { return Path.Combine(System.Web.HttpContext.Current.Server.MapPath("~/Images/")); } //Path should! always end with '/'
+            get { return Path.Combine(System.Web.HttpContext.Current.Server.MapPath("~/Images/")); }
         }
 
         #region 分页获取数据
@@ -60,17 +60,21 @@ namespace GotchServer.Portal.Controllers
         {
             string json = Request["stockJson"];
             Stock stock = Newtonsoft.Json.JsonConvert.DeserializeObject<Stock>(json);
-            var file = Request.Files[0];
-            if(file!=null)
-            {
-                string fullPath = StorageRoot + Path.GetFileName(file.FileName);
-                stock.picfile = file.FileName;
-                file.SaveAs(fullPath);
-            }
 
+            if(Request.Files.Count>0)
+            {
+                var file = Request.Files[0];
+
+                if (file != null)
+                {
+                    string fullPath = StorageRoot + Path.GetFileName(file.FileName);
+                    stock.picfile = file.FileName;
+                    file.SaveAs(fullPath);
+                }
+            }
             int result = stockRepostory.AddStock(stock);
             if (result > 0)
-                return Content("ok");
+                return Content(stock.Id+"");
             return Content("error");
         } 
         #endregion
@@ -86,16 +90,20 @@ namespace GotchServer.Portal.Controllers
             string json = Request["stockJson"];
             Stock stock = new Stock();
             stock = Newtonsoft.Json.JsonConvert.DeserializeObject<Stock>(json);
-            var file = Request.Files[0];
-            if (file != null)
+            if (Request.Files.Count > 0)
             {
-                string fullPath = StorageRoot + Path.GetFileName(file.FileName);
-                stock.picfile = file.FileName;
-                file.SaveAs(fullPath);
+                var file = Request.Files[0];
+
+                if (file != null)
+                {
+                    string fullPath = StorageRoot + Path.GetFileName(file.FileName);
+                    stock.picfile = file.FileName;
+                    file.SaveAs(fullPath);
+                }
             }
             int result = stockRepostory.UpdateStock(stock);
             if (result > 0)
-                return Content("ok");
+                return Content(stock.Id+"");
             return Content("error");
         } 
         #endregion
