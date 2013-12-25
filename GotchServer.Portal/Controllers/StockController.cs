@@ -120,9 +120,15 @@ namespace GotchServer.Portal.Controllers
             var stockModel = stockRepostory.LoadStocks(s => s.Id == id).FirstOrDefault();
             if (stockModel != null)
             {
+                var stockModel1 = stockRepostory.LoadStocks(s => true).LastOrDefault();
                 result = stockRepostory.DeleteStock(stockModel);
                 if (result > 0)
                 {
+                    if (stockModel.Id == stockModel1.Id)
+                    {
+                        return Content("DeleteLast");
+                    }
+
                     return Content("ok");
                 }
                 return Content("error");
