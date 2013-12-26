@@ -67,8 +67,20 @@ namespace GotchServer.Portal.Controllers
 
                 if (file != null)
                 {
-                    string fullPath = StorageRoot + Path.GetFileName(file.FileName);
-                    stock.picfile = file.FileName;
+                    
+                    string fileName = file.FileName.Replace(" ", "");
+                    fileName = fileName.Replace("&", "");
+                    fileName = fileName.Replace("@", "");
+                    fileName = fileName.Replace("#", "");
+                    fileName = fileName.Replace("$", "");
+                    fileName = fileName.Replace("%", "");
+                    fileName = fileName.Replace("'", "");
+                    fileName = fileName.Replace(",", "");
+                    fileName = fileName.Replace("+", "");
+                    fileName = fileName.Replace("!", "");
+
+                    string fullPath = StorageRoot + Path.GetFileName(fileName);
+                    stock.picfile = fileName;
                     file.SaveAs(fullPath);
                 }
             }
@@ -96,8 +108,18 @@ namespace GotchServer.Portal.Controllers
 
                 if (file != null)
                 {
-                    string fullPath = StorageRoot + Path.GetFileName(file.FileName);
-                    stock.picfile = file.FileName;
+                    string fileName = file.FileName.Replace(" ", "");
+                    fileName = fileName.Replace("&", "");
+                    fileName = fileName.Replace("@", "");
+                    fileName = fileName.Replace("#", "");
+                    fileName = fileName.Replace("$", "");
+                    fileName = fileName.Replace("%", "");
+                    fileName = fileName.Replace("'", "");
+                    fileName = fileName.Replace(",", "");
+                    fileName = fileName.Replace("+", "");
+                    fileName = fileName.Replace("!", "");
+                    string fullPath = StorageRoot + Path.GetFileName(fileName);
+                    stock.picfile = fileName;
                     file.SaveAs(fullPath);
                 }
             }
